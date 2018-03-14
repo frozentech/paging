@@ -1,29 +1,42 @@
-# README #
+# paging
+--
+    import "github.com/frozentech/go-paging"
 
-This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
+## Usage
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+```go
+const (
+	// DefaultLimit ...
+	DefaultLimit = "10"
+)
+```
 
-### How do I get set up? ###
+#### type Paging
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+```go
+type Paging struct {
+	Next     string      `json:"next"`
+	Previous string      `json:"previous"`
+	Limit    int         `json:"limit"`
+	Offset   int         `json:"offset"`
+	Count    int64       `json:"count"`
+	Records  interface{} `json:"records"`
+}
+```
 
-### Contribution guidelines ###
+Paging ...
 
-* Writing tests
-* Code review
-* Other guidelines
+#### func  NewPaging
 
-### Who do I talk to? ###
+```go
+func NewPaging(records interface{}, offset int, limit int, count int64) *Paging
+```
+NewPaging creates a paging instance
 
-* Repo owner or admin
-* Other community or team contact
+#### func (*Paging) Init
+
+```go
+func (me *Paging) Init(request *http.Request)
+```
+Init initialize Next and Previous fields
