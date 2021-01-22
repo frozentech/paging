@@ -1,6 +1,6 @@
 # paging
 --
-    import "github.com/frozentech/go-paging"
+    import "github.com/frozentech/paging"
 
 
 ## Usage
